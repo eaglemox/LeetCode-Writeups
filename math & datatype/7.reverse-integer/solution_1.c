@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+#include <limits.h>
 int reverse(int x){
     // digits of integer x is reversed one by one backward, negative sign is automatically considered
     // b.c. the digit is calculated through '%' (e.g. temp = -321, digit = -321 % 10 = -1)   
