@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+#include <stdbool.h>
 bool isPalindrome(int x) {
     if (x < 0) { // negative number contain '-', can never be a palindrome
         return false;
