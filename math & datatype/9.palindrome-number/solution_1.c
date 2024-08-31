@@ -5,6 +5,7 @@
  */
 
 // @lc code=start
+#include <stdbool.h>
 #include <string.h>
 void itoa(int x, int *arr, int *len) {
     char buffer[12];
