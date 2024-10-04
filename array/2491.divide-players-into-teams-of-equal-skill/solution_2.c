@@ -23,7 +23,7 @@ long long dividePlayers(int* skill, int skillSize) {
     if (target % (skillSize / 2)) {return -1;}
     target /= skillSize / 2;
 
-    printf("target: %d\n", target);
+    // printf("target: %lld\n", target);
     long long chemistry = 0;
     for (int i = 1; i <= MAX_VAL; i++) {
         if (freq[i] != 0) {
