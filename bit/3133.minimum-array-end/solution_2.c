@@ -10,12 +10,12 @@ long long minEnd(int n, int x) {
     // Return the minimum of last number, that is x with additional log2(n - 1) bits set
     // Time: O(n), Space: O(1)
     long long result = x;
-    printBits(result);
+    // printBits(result);
 
     while (--n) { // x is the smallest number
         result = (result + 1) | x;
     }
-    printBits(result);
+    // printBits(result);
     return result;
 }
 
