@@ -15,7 +15,8 @@ using namespace std;
 class Solution {
 public:
     int slidingPuzzle(vector<vector<int>>& board) {
-        // BFS approach, Time: O(), Space: O()
+        // BFS approach, Time: O((M*N)!*(M*N)), (M*N)! combinations and O(M*N) to find zeroIndex
+        // Space: O((M*N)!), queue's max size can have (M*N)! combinations
         // Possible move direction of each index
         vector<vector<int>> direction = {{1, 3}, {0, 2, 4}, {1, 5},
                                          {0, 4}, {1, 3, 5}, {2, 4}};
