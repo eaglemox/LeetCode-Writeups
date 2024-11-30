@@ -43,7 +43,6 @@ public:
                 pq.push({nextTime, nextRow, nextCol});
             }
         }
-
         return -1;
     }
 };
