@@ -27,13 +27,12 @@ public:
             vector<int> current = pq.top();
             pq.pop();
             int time = current[0], row = current[1], col = current[2];
-            
             if (row == m - 1 && col == n - 1) {return time;} // reach bottom right
             if (visited[row][col]) {continue;}
             visited[row][col] = true;
             
-            for (vector<int> dir : direction) {
-                int nextRow = row + dir[0], nextCol = row + dir[1];
+            for (vector<int>& dir : direction) {
+                int nextRow = row + dir[0], nextCol = col + dir[1];
                 // Check index is valid
                 if (nextRow < 0 || nextRow >= m || nextCol < 0 || nextCol >= n || visited[nextRow][nextCol]) {continue;}
                 // If the time >= grid[row][col], nextTime = time + 1, If the current time havent reach grid[row][col]
