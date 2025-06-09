@@ -5,37 +5,37 @@
  */
 
 // @lc code=start
-#include <stdio.h>
 #define min(a, b) ((a < b) ? a : b)
-int countCombinations(long long n, long long prefix) {
-    // count number of combinations of prefix within n
-    int count = 0;
-    long long lowerbound = prefix, upperbound = prefix + 1;
-    while (lowerbound <= n) {
-        // counting [prefix, prefix+1]
-        // e.g. (103, 1) -> 10~19, 100~103
-        count += min((n + 1), upperbound) - lowerbound;
-        lowerbound *= 10;
-        upperbound *= 10;
+
+int branchSize(int n, int curr, int next) {
+    int size = 0;
+    while (curr <= n) {
+        size += min(n + 1, next) - curr; // Count number of nodes between curr and next (but no more than n)
+        curr *= 10;
+        next *= 10;
     }
-    return count;
+
+    return size;
 }
+
 int findKthNumber(int n, int k) {
-    // the value does not matter, count the number of digit combinations 
-    int nextNum = 1; // always first number
-    k--; // "1"
+    // Precompute subtree sizes in the trie to skip branches when locating the k-th number.
+    int curr = 1;
+    k--; // 1 is always first number
 
     while (k > 0) {
-        int steps = countCombinations(n, nextNum);
-        if (steps <= k) { // subtract possible combinations of current prefix
-            k -= steps;
-            nextNum++;
-        } else { // enter next level of this digit
-            nextNum *= 10;
+        // If k-th number is not in this branch, skip to next branch, else dive deeper into the subtree
+        int numNodes = branchSize(n, curr, curr + 1);
+        if (numNodes <= k) {
+            curr++;
+            k -= numNodes;
+        } else {
+            curr *= 10;
             k--;
         }
     }
-    return nextNum;
+
+    return curr;
 }
 // @lc code=end
 
