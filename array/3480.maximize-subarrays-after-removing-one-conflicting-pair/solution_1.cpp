@@ -22,8 +22,8 @@ public:
         }
 
         long long result = 0;
-        vector<int> maxLeft = {0, 0};
-        vector<int> gain(n + 1, 0); 
+        vector<long long> maxLeft = {0, 0};
+        vector<long long> gain(n + 1, 0); 
         for (int r = 1; r <= n; r++) {
             // Update maximum conflict left value with current possible conflict pairs
             for (const int& l: leftBoundary[r]) {
